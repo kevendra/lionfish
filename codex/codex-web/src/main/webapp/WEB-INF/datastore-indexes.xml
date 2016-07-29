@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<datastore-indexes autoGenerate="true">
+
+<!-- 
+@Index is for single-property indexes. 
+datastore-indexes.xml is for multi-property indexes.
+-->
+	<datastore-index kind="Session" ancestor="false">
+        <property name="active" direction="asc"/>
+        <property name="siteId" direction="asc"/>
+        <property name="created" direction="desc"/>
+    </datastore-index>
+	<datastore-index kind="Session" ancestor="false">
+        <property name="active" direction="asc"/>
+        <property name="personId" direction="asc"/>
+        <property name="created" direction="desc"/>
+    </datastore-index>
+	<datastore-index kind="Session" ancestor="false">
+        <property name="active" direction="asc"/>
+        <property name="siteId" direction="asc"/>
+        <property name="personId" direction="asc"/>
+        <property name="created" direction="desc"/>
+    </datastore-index>
+	<datastore-index kind="Session" ancestor="false">
+        <property name="active" direction="asc"/>
+        <property name="siteId" direction="asc"/>
+        <property name="ticketId" direction="asc"/>
+        <property name="created" direction="desc"/>
+    </datastore-index>
+	<datastore-index kind="GroupTx" ancestor="false">
+        <property name="active" direction="asc"/>
+        <property name="siteId" direction="asc"/>
+        <property name="personId" direction="asc"/>
+        <property name="modified" direction="desc"/>
+    </datastore-index>
+	<datastore-index kind="GroupTx" ancestor="false">
+        <property name="active" direction="asc"/>
+        <property name="siteId" direction="asc"/>
+        <property name="ticketId" direction="asc"/>
+        <property name="modified" direction="desc"/>
+    </datastore-index>
+	<datastore-index kind="GroupTx" ancestor="false">
+        <property name="active" direction="asc"/>
+        <property name="siteId" direction="asc"/>
+        <property name="personId" direction="asc"/>
+        <property name="ticketId" direction="asc"/>
+    </datastore-index>
+    <!-- 
+    <datastore-index kind="Session" ancestor="false">
+        <property name="active" direction="asc"/>
+        <property name="personId" direction="asc"/>
+        <property name="siteId" direction="asc"/>
+    </datastore-index>
+ -->
+    <datastore-index kind="Activity" ancestor="false">
+        <property name="sessionId" direction="asc"/>
+        <property name="created" direction="desc"/>
+    </datastore-index>
+    <datastore-index kind="Socket" ancestor="false">
+        <property name="siteId" direction="asc"/>
+        <property name="active" direction="asc"/>
+    </datastore-index>
+    <datastore-index kind="Socket" ancestor="false">
+        <property name="siteId" direction="asc"/>
+        <property name="active" direction="asc"/>
+        <property name="emp" direction="asc"/>
+    </datastore-index>
+ 
+</datastore-indexes>

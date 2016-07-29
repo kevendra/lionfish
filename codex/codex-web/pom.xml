@@ -1,0 +1,173 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>xyz.share.codex</groupId>
+		<artifactId>codex-parent</artifactId>
+		<version>1.0.1</version>
+		<relativePath>../</relativePath>
+	</parent>
+
+	<artifactId>codex-web</artifactId>
+
+	<packaging>war</packaging>
+
+	<name>Codex - Api</name>
+	<description>Api</description>
+
+	<dependencies>
+		<!-- ****************************** Test Scope ****************************** -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+
+		<!-- ****************************** Runtime Scope ****************************** -->
+		<dependency>
+			<groupId>xyz.share.codex</groupId>
+			<artifactId>codex-service</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>me.parakh.core</groupId>
+			<artifactId>cdk-security</artifactId>
+			<!-- <scope>runtime</scope> -->
+		</dependency>
+		<!-- ****************************** Provided Scope ****************************** -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- ****************************** Compile Scope ****************************** -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+		</dependency>
+
+		<!-- <dependency>
+						<groupId>xyz.share.core</groupId>
+						<artifactId>core-rest</artifactId>
+				</dependency> -->
+		<dependency>
+			<groupId>me.parakh.core</groupId>
+			<artifactId>core-api</artifactId>
+			<!--
+				<artifactId>core-api</artifactId>
+				-OR-
+				<artifactId>core-security</artifactId>
+			-->
+		</dependency>
+
+		<dependency>
+			<groupId>xyz.share.codex</groupId>
+			<artifactId>codex-model</artifactId>
+		</dependency>
+
+				<!-- @see AbstractAssetController.java com.google.appengine.api.blobstore -->
+				<dependency>
+						<groupId>com.google.appengine</groupId>
+						<artifactId>appengine-api-1.0-sdk</artifactId>
+				</dependency>
+	</dependencies>
+
+	<!-- ****************************** Build Settings ****************************** -->
+	<build>
+		<finalName>codex</finalName>
+		<filters>
+			<filter>filter-${env}.properties</filter>
+			<!-- see filtering true in war plugin -->
+			<!--
+				<filter>filter-prod.properties</filter>
+							<filter>filter-local.properties</filter>
+			-->
+		</filters>
+
+		<plugins>		
+			<plugin>
+				<groupId>com.google.appengine</groupId>
+				<artifactId>appengine-maven-plugin</artifactId>
+				<version>1.9.34</version>
+			</plugin>
+			<plugin>
+				<groupId>net.kindleit</groupId>
+				<artifactId>maven-gae-plugin</artifactId>
+				<configuration>
+					<jvmFlags>
+						<jvmFlag>-Ddatastore.backing_store=${project.basedir}/db/local_db.bin</jvmFlag>
+						<jvmFlag>-Xdebug</jvmFlag>
+						<jvmFlag>-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000</jvmFlag>
+						<jvmFlag>-Dmail.log_mail_level=WARNING</jvmFlag>
+						<jvmFlag>-Dmail.log_mail_body=true</jvmFlag>
+						<jvmFlag>-Dappengine.user.timezone=UTC
+						</jvmFlag>
+						<jvmFlag>-Dappengine.user.timezone.impl=UTC
+						</jvmFlag>
+					</jvmFlags>
+					<severity>0</severity>
+					<serverId>${google.app.id}</serverId>
+					<monitorPort>8180</monitorPort>
+				</configuration>
+				<!--
+								<executions>
+										<execution>
+												<goals>
+														<goal>unpack</goal>
+												</goals>
+										</execution>
+								</executions>
+								 -->
+				<dependencies>
+					<dependency>
+						<groupId>net.kindleit</groupId>
+						<artifactId>gae-runtime</artifactId>
+						<version>${gae.runtime}</version>
+						<type>pom</type>
+					</dependency>
+				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<webResources>
+						<resource>
+							<targetPath>WEB-INF</targetPath>
+							<directory>src/main/webapp/WEB-INF</directory>
+							<filtering>true</filtering>
+							<includes>
+								<include>*.xml</include>
+							</includes>
+						</resource>
+					</webResources>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>local</id>
+			<properties>
+				<env>local</env>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<env>dev</env>
+			</properties>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<properties>
+				<env>prod</env>
+			</properties>
+		</profile>
+	</profiles>
+
+</project>

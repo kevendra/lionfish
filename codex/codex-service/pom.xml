@@ -1,0 +1,36 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+		<parent>
+			<groupId>xyz.share.codex</groupId>
+			<artifactId>codex-parent</artifactId>
+			<version>1.0.1</version>
+			<relativePath>../</relativePath>
+		</parent>
+
+	<artifactId>codex-service</artifactId>
+
+	<packaging>jar</packaging>
+
+		<name>Codex - Service</name>
+		<description>Service Impl</description>
+
+
+	<dependencies>
+		<!-- ****************************** Test Scope ****************************** -->
+
+
+	 	<!-- ****************************** Compile Scope ****************************** -->
+		<dependency>
+			<groupId>xyz.share.codex</groupId>
+			<artifactId>codex-model</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>me.parakh.core</groupId>
+			<artifactId>core-service-appengine</artifactId>
+		</dependency>
+
+	</dependencies>
+
+</project>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+
+	<properties>
+		<title>Java Foundation - Core</title>
+		<author email="kevendra.patidar@gmail.com">Kevendra Patidar</author>
+	</properties>
+
+	<body>
+
+		<!-- The body of the document contains a number of sections -->
+		<section name="Java Foundation - Core Introduction">
+			<p>The sharedCore module is responsible for several key roles within the Java Foundation.</p>
+		</section>
+		<section name="Agent">
+			<p>This package includes facilities for running various utilities in background threads.  
+			This includes an AgentFactory, ConnectionPoolAgent, ScheduledAgent and a TriggerFileAgent.  
+			These classes can throw an AgentException.</p>
+			<p>The classes in this section will be deprecated and replaced with SpringFramework 
+			utilities and JMX beans.</p>
+		</section>
+		<section name="Auth">
+			<p>This package includes authorization via LDAP.</p>
+			<p>The classes in this section will be deprecated and replaced with SpringFramework 
+			utilities and perhaps the Acegi Security framework.</p>
+		</section>
+		<section name="Connection">
+			<p>This package includes connection facilities.  These classes are intended to supply the basic
+			functionality of managing connections of any kind. The connections to be managed extend 
+			functionality from the <a href="http://172.16.190.73:8080/ApplicationArchitecture/SharedCore/xref/index.html">com.disney.connection.AbstractConnection </a> class.</p>
+			<p>The classes in this package make heavy use of the ObjectPool class.  This includes the socket 
+			package as well.</p>
+			<p>The classes in this section will be deprecated and replaced with SpringFramework 
+			utilities and JMX beans.</p>
+		</section>
+		<section name="Context">
+			<p>This package includes ContextManager, a non thread safe Singleton responsible for associating Contexts to
+			 the current running Thread.  Also included are ApplicationContext, BaseContext, ContextAgent.</p>
+			<p>The classes in this section will be deprecated and replaced with SpringFramework 
+			utilities.</p>
+		</section>
+		<section name="DataType">
+			<p>This package includes AbstractEnum and Period classes.</p>
+		</section>
+		<section name="Exception">
+			<p>This package includes BundledException and WrappedException.  These classes will be reviewed to 
+			determine if a more modern approach is warranted and if they can be replaced with SpringFramework 
+			components.</p>
+		</section>
+		<section name="Javabean">
+			<p>The classes in this section will be deprecated and replaced with Spring Bean components.</p>
+		</section>
+		<section name="Log4j and Logging Packages">
+			<p>These packages include logging utilities that will all be reviewed.</p>
+		</section>
+		<section name="Notification">
+			<p>This package includes ActionCode which might be better as a enum.  OpcmsgException extends Exception 
+			and does nothing new so it might be replaced.  The Severity class also might be better as a enum.  
+			TroubleTicketBean is most likely better as a SpringBean.</p>
+		</section>
+		<section name="Pool">
+			<p>This package includes ObjectPool which is a custom pool implementation that includes several 
+			synchronized methods.  Spring has facilities for pooling objects and it is unlikely that a custom 
+			pool class is required.</p>
+		</section>
+		<section name="Test">
+			<p>This package includes tests for several components and will be moved into a test section not 
+			on the main code branch.  all tests should be updated to improve coverage and utilize JUnit4 in 
+			lieu of JUnit3.</p>
+		</section>
+		<section name="Thread">
+			<p>This package includes CountingSemaphore, PooledRunnable, ThreadPool, ThreadPoolAgent, WorkEntry 
+			and WorkQueue.  All of these will be reviewed for Architectural considerations and updated or 
+			replaced with new Spring derived classes.</p>
+		</section>
+		<section name="Utilities, Office and Zip">
+			<p>This package includes many classes that are designed to be utilized extensively.  All developers 
+			should be familiar with these and not duplicate their functionality elsewhere.  These will be 
+			updated and corrected as necessary if errors or problems are found in them.</p>
+		</section>
+		<section name="WorkFlow">
+			<p>This package includes StateMachine and StateMachineException.  State Machines are used to 
+			implement workflows. A workflow is a machine that transitions between pre-defiend states based on 
+			the conditions of the state of objects moving through the workflow. State Machines are defined 
+			using UML activity models.</p>
+			<p>This StateMachine base class is an engine that can run state machines by invoking the 
+			start() method. The machine's workflow is implemented in the perform() method, 
+			which must be implemented by the extending class. This method should represent the UML activity model. 
+			</p>
+			<p>The classes in this section will be deprecated and replaced with SpringFramework components.</p>
+		</section>
+		<section name="Transaction">
+			<p>This package includes JTATransactionHelper and TransactionUtility.</p>
+			<p>The classes in this section will be deprecated and replaced with SpringFramework components.</p>
+		</section>
+		<section name="XML">
+			<p>This package includes DOMHelper, DOMHelperDRP, JaxbHelper, Multiplicity, SchemaComplexTypeWriter,
+			SchemaElementWriter, SchemaWriter, XSLTManager, XmlException, XmlHelper and XmlWriter.</p>
+			<p>The classes in this section will be deprecated and replaced with SpringFramework components.</p>
+		</section>
+	</body>
+</document>

@@ -1,0 +1,84 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+
+	<parent>
+		<groupId>me.parakh.platform</groupId>
+		<artifactId>platform-parent</artifactId>
+		<version>1.0.1</version>
+	</parent>
+
+	<groupId>xyz.share.codex</groupId>
+	<artifactId>codex-parent</artifactId>
+	<version>1.0.1</version>
+
+	<packaging>pom</packaging>
+
+	<name>Codex - Parent</name>
+	<description>
+		codex
+	</description>
+
+
+	<!-- ****************************** Project Information ****************************** -->
+	<inceptionYear>2014</inceptionYear>
+	<url>https://github.com/kevendra</url>
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<id>kevendra</id>
+			<name>Kevendra Patidar</name>
+			<email>kevendra.patidar@gmail.com</email>
+			<roles>
+				<role>lead</role>
+				<role>architect</role>
+				<role>developer</role>
+			</roles>
+			<timezone>+530</timezone>
+		</developer>
+	</developers>
+
+	<properties>
+		<core.version>1.0.1</core.version>
+		<codex.version>1.0.1</codex.version>
+	</properties>
+
+	<modules>
+		<module>codex-model</module>
+		<module>codex-service</module>
+		<module>codex-web</module>
+	</modules>
+
+
+	<dependencyManagement>
+		<dependencies>
+		<!-- ****************************** Test Scope ****************************** -->
+
+		<!-- ****************************** Runtime Scope ****************************** -->
+		<dependency>
+			<groupId>xyz.share.codex</groupId>
+			<artifactId>codex-service</artifactId>
+			<version>${codex.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<!-- ****************************** Provided Scope ****************************** -->
+
+		<!-- ****************************** Compile Scope ****************************** -->
+		<dependency>
+			<groupId>xyz.share.codex</groupId>
+			<artifactId>codex-model</artifactId>
+			<version>${codex.version}</version>
+		</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+
+
+</project>

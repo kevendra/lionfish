@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
+
+    <application>${google.app.id}</application>
+    <version>${google.app.version}</version>
+    
+    <!-- Session Mechanism -->
+    <sessions-enabled>true</sessions-enabled>
+<!-- 
+The data of a session is stored in datastore with entities of type _ah_SESSION and is also stored in MEMCACHE for faster access. 
+You can reduce the latency by marking the session data written to datastore to be asynchronous. 
+The session data writing to datastore is done by a queue, if unspecified is “default” queue, but can be configured to other names.
+
+<async-session-persistence enabled="true" queue-name="sessionQueue"/>
+ -->    
+    
+    <threadsafe>true</threadsafe>
+
+    <!-- static content is served by a separate web server which is a good practice in web applications -->
+    <static-files>
+        <include path="**" expiration="14d" />
+        <exclude path="/META-INF/**" />
+    </static-files>
+
+    <resource-files>
+        <exclude path="WEB-INF/classes/i18n/**"/>
+        <exclude path="/img/**" />
+        <exclude path="/css/**" />
+        <exclude path="/js/**" />
+        <exclude path="/favicon.ico" />
+    </resource-files>
+<!-- 
+	<env-variables>
+       <env-var name="ENV_VAR_NAME" value="ENV_VAR_VALUE" />
+    </env-variables>
+    
+if logging.properties in /src/main/resources
+<property name="${google.app.id}.user.timeout" value="300" />
+ -->
+    <system-properties>
+    	<property name="java.util.logging.config.file" value="WEB-INF/classes/logging.properties" /> 
+    </system-properties>
+
+    <admin-console>
+        <page name="Admin" url="/admin" />
+        <page name="Appstats" url="/appstats" />
+        <!-- <page name="Entity Console" url="/entity-console/main" /> -->
+    </admin-console>
+    
+    <static-error-handlers>
+        <handler file="/html/error.html"/>
+        <handler file="/html/over_quota.html" error-code="over_quota"/>
+        <handler file="/html/dos_api_denial.html" error-code="dos_api_denial"/>
+        <handler file="/html/timeout.html" error-code="timeout"/>
+    </static-error-handlers>
+
+</appengine-web-app>
